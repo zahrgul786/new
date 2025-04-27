@@ -1,14 +1,9 @@
+
 [build]
-  # Build command to run before deploying
-  command = "npm run build"
-  # Directory to publish to Netlify after build (default is public)
+  command = "npm install"
   publish = "public"
 
-[functions]
-  # Directory where serverless functions are located
-  directory = "netlify/functions"
-
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/server/:splat"
+  from = "/*"
+  to = "/index.html"
   status = 200

@@ -1,12 +1,20 @@
+// app.js
 const express = require("express");
-const serverless = require("serverless-http");
 const app = express();
 
-app.set('view engine', "ejs")
-app.set('views')
+// Set the view engine to EJS
+app.set("view engine", "ejs");
+
+// Serve static files from the public folder
+app.use(express.static("public"));
+
+// Route to render index page
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { title: "Simple EJS App" });
 });
 
-
-module.exports.handler = serverless(app);
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
